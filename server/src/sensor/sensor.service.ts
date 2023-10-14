@@ -1,4 +1,4 @@
-import { Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { SensorDataDTO } from './dto/upload.dto';
 import { PrismaService } from '../prisma/prisma.service';
 import { RegisterDTO } from './dto/register.dto';
@@ -37,22 +37,5 @@ export class SensorService {
             throw new InternalServerErrorException("Error uploading data");   
         }
 
-    }
-
-    async register(data: RegisterDTO){
-
-        const device = await this.prisma.device.findUnique({
-            name: data.name
-        })
-        
-        try {
-            const newDevice = await this.prisma.device.create({
-                data: {
-                    name: data.name,
-                }
-            })
-        } catch (err) {
-            throw new InternalServerErrorException("Error registering device");
-        }
     }
 }
