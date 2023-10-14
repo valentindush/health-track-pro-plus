@@ -48,4 +48,37 @@ export class DeviceService {
             throw new InternalServerErrorException("Something went wrong")
         }
     }
+
+    async getById(id:number){
+        try{
+            const device = await this.prisma.device.findUnique({
+                where: {
+                    id: parseInt(id.toString())
+                }
+            })
+            return {
+                message: "success",
+                data: device
+            }
+        }catch(err){
+            throw new InternalServerErrorException("Something Went Wrong")
+        }
+    }
+
+    async deleteById(id: number){
+        try {
+            const deleted = this.prisma.device.delete({
+                where: {
+                    id: parseInt(id.toString())
+                }
+            })
+
+            return{
+                message: "success",
+                data: deleted
+            }
+        } catch (err) {
+            throw new InternalServerErrorException("Something went wrong")
+        }
+    }
 }

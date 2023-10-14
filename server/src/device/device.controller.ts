@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { DeviceService } from './device.service';
 import { RegisterDTO } from './dto/register.dto';
 
@@ -15,4 +15,15 @@ export class DeviceController {
   getDevices(){
     return this.deviceService.getDevices()
   }
+
+  @Get("get/:id")
+  geById(@Param("id") id: number){
+    return this.deviceService.getById(id)
+  }
+
+  @Delete("delete/:id")
+  deleteById(@Param("id") id: number){
+    return this.deviceService.deleteById(id)
+  }
+
 }
