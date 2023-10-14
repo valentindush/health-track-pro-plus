@@ -4,10 +4,6 @@ export class SensorDataDTO {
   @IsString()
   deviceId: string;
 
-  @IsNumber()
-  value: number;
-
-  @IsDate()
   timeStamp: Date;
 
   @IsNumber()
@@ -15,12 +11,4 @@ export class SensorDataDTO {
 
   @IsNumber()
   heartBeat: number;
-}
-
-export class UploadDataDTO {
-  @IsObject()
-  heartBeatSensor: SensorDataDTO;
-
-  @IsObject()
-  temperatureSensor: SensorDataDTO;
 }

@@ -1,7 +1,6 @@
-import { BadRequestException, Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
+import {Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { SensorDataDTO } from './dto/upload.dto';
 import { PrismaService } from '../prisma/prisma.service';
-import { RegisterDTO } from './dto/register.dto';
 
 @Injectable()
 export class SensorService {
@@ -10,7 +9,7 @@ export class SensorService {
     }
 
     async upload(data: SensorDataDTO){
-        const { deviceId, value, timeStamp, heartBeat, temperature } = data;
+        const { deviceId, timeStamp, heartBeat, temperature } = data;
         const device = await this.prisma.device.findUnique({
             where: { id: parseInt(deviceId) }
         });
@@ -37,5 +36,21 @@ export class SensorService {
             throw new InternalServerErrorException("Error uploading data");   
         }
 
+    }
+
+    async getReadingsBydDevice(id: number){
+        try {
+            const readings = await this.prisma.reading.findMany({
+                where: {
+                    deviceId: parseInt(id.toString())
+                }
+            })
+            return {
+                message: "success",
+                data: readings
+            }
+        } catch (error) {
+            throw new InternalServerErrorException("Something went wrong")
+        }
     }
 }
