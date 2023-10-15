@@ -21,4 +21,5 @@ npm run start:dev
 `````
 to run the server in development mode
 
-
+the dev server can be accessed at `http://localhost:4000`
+the swagger docs can be accessed at `http://localhost:4000/api-docs`
