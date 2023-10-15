@@ -1,7 +1,9 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { SensorService } from './sensor.service';
 import { SensorDataDTO } from './dto/upload.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags("Sensor")
 @Controller('sensor')
 export class SensorController {
   constructor(private readonly sensorService: SensorService) {}
