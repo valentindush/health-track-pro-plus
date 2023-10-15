@@ -1,8 +1,8 @@
-import { IsString, IsNumber, IsDate, IsObject } from 'class-validator';
+import { IsNumber,} from 'class-validator';
 
 export class SensorDataDTO {
-  @IsString()
-  deviceId: string;
+  @IsNumber()
+  patientId: number;
 
   timeStamp: Date;
 

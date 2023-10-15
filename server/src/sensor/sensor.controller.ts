@@ -1,7 +1,6 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { SensorService } from './sensor.service';
 import { SensorDataDTO } from './dto/upload.dto';
-import { RegisterDTO } from './dto/register.dto';
 
 @Controller('sensor')
 export class SensorController {

@@ -9,9 +9,9 @@ export class SensorService {
     }
 
     async upload(data: SensorDataDTO){
-        const { deviceId, timeStamp, heartBeat, temperature } = data;
-        const device = await this.prisma.device.findUnique({
-            where: { id: parseInt(deviceId) }
+        const { patientId, timeStamp, heartBeat, temperature } = data;
+        const device = await this.prisma.patient.findUnique({
+            where: { id: patientId }
         });
 
         if(!device){
@@ -21,7 +21,7 @@ export class SensorService {
         try {
             const newRecord  = await this.prisma.reading.create({
                 data: {
-                    deviceId: parseInt(deviceId),
+                    patientId: patientId,
                     heartBeat: heartBeat,
                     temperature: temperature,
                     timestamp: new Date(timeStamp)
@@ -42,7 +42,7 @@ export class SensorService {
         try {
             const readings = await this.prisma.reading.findMany({
                 where: {
-                    deviceId: parseInt(id.toString())
+                    patientId: parseInt(id.toString())
                 }
             })
             return {
