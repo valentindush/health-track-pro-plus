@@ -6,4 +6,7 @@ export class UpdatePatientDTO {
 
     @IsString()
     nationalId: string;
+
+    @IsString()
+    frequentSickness: string
 }

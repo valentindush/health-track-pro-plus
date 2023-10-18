@@ -9,4 +9,8 @@ export class CreatePatientDTO {
     @IsString()
     @IsNotEmpty()
     nationalId: string
+
+    @IsNotEmpty()
+    @IsString()
+    frequentSickness: string
 }
