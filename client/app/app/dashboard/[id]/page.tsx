@@ -66,13 +66,13 @@ const DashBoard = ({ params }: { params: { id: string } }) => {
                         label: 'Temperature',
                         data: rd.data?.map((r)=> r.temperature),
                         borderColor: 'white',
-                        backgroundColor: 'pink',
+                        backgroundColor: '#3e9eed',
                     },
                     {
                         label: 'Heart Beat Rate',
                         data: rd.data?.map((r)=> r.heartBeat),
                         borderColor: 'white',
-                        backgroundColor: 'cyan',
+                        backgroundColor: '#f763a6',
                     },
                 ],
             }
@@ -104,17 +104,21 @@ const DashBoard = ({ params }: { params: { id: string } }) => {
             {patient && <div className="details">
                 <p className="text-lg font-medium text-gray-700">Welcome to <span className="font-bold">{patient.name}</span>'s Dashboard!</p>
                 <div className="py-6 grid grid-cols-3 gap-4">
-                    <div className=" bg-gray-100/40 rounded-xl h-[7rem] shadow hover:shadow-md p-4">
+                    <div className=" bg-gray-100/40 rounded-xl h-[7rem] shadow-md hover:shadow-lg p-4">
                         <p className="font-medium text-lg">{patient?.name}</p>
                         <p className="font-sm">{patient?.nationalId}</p>
                     </div>
-                    <div className="border-2 border-gradient-to-br text-gray-600 hover:border-gradient-to-bl transition-colors from-pink-500 to-cyan-500 rounded-xl h-[7rem] shadow font-medium flex flex-col justify-center items-center hover:shadow-md">
-                        <p className="text-xs">Average Temperature</p>
-                        <span className="text-4xl">{averages[0]}&deg;C</span>
+                    <div className="bg-gradient-to-br text-gray-600 border hover:bg-gradient-to-bl transition-colors from-pink-500 to-cyan-500 rounded-xl h-[7rem] shadow-lg font-medium p-1 hover:shadow-md">
+                        <div className="bg-gray-100 flex flex-col h-full rounded-lg items-center justify-center">
+                            <p className="text-xs">Average Temperature</p>
+                            <span className="text-4xl">{averages[0]}&deg;C</span>
+                        </div>
                     </div>
-                    <div className="border-2 border-gradient-to-br text-gray-600 hover:border-gradient-to-bl transition-colors from-pink-500 to-cyan-500 rounded-xl h-[7rem] shadow font-medium flex flex-col justify-center items-center hover:shadow-md">
-                        <p className="text-xs">Average BPM</p>
-                        <span className="text-4xl">{averages[1]}</span>
+                    <div className="bg-gradient-to-br text-gray-600 hover:bg-gradient-to-bl transition-colors from-pink-500 to-cyan-500 rounded-xl h-[7rem] shadow-lg font-medium p-1 hover:shadow-md">
+                        <div className="bg-gray-100 flex flex-col h-full rounded-lg items-center justify-center">
+                            <p className="text-xs">Average BPM</p>
+                            <span className="text-4xl">{averages[1]}</span>
+                        </div>
                     </div>
                 </div>
             </div>}
@@ -124,7 +128,7 @@ const DashBoard = ({ params }: { params: { id: string } }) => {
 
                 <Chart data={chartData} />
             </div>
-            <div className="">
+            <div className="p-2 rounded-xl border-2 border-pink-600/40">
                 <div className="relative overflow-x-auto">
                     <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
