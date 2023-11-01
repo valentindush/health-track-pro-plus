@@ -6,7 +6,7 @@ const inter = Nunito({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'HealthTrack Pro Plus',
-  description: 'Track ya health homie',
+  description: 'Track ya health',
 }
 
 export default function RootLayout({
@@ -18,6 +18,12 @@ export default function RootLayout({
     <html lang="en" className="light">
       <body className={inter.className}>
         {children}
+
+        <footer className='bg-pink-400 p-8 text-white absolute w-screen bottom-0'>
+
+          <p className='text-center'>Copyright &copy; {new Date().getFullYear()} by Dush All right reserved </p>
+
+        </footer>
       </body>
     </html>
   )

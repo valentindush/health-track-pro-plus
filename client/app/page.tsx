@@ -56,6 +56,7 @@ export default function Home() {
                       isIndeterminate
                       aria-label="Loading..."
                       className="max-w-md"
+                      color='danger'
                     />}
         <div className="relative overflow-x-auto">
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">

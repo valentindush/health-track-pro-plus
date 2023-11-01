@@ -90,6 +90,7 @@ const DashBoard = ({ params }: { params: { id: string } }) => {
     }
 
     useEffect(() => {
+        
         getData()
     }, [])
 
@@ -100,6 +101,7 @@ const DashBoard = ({ params }: { params: { id: string } }) => {
                 isIndeterminate
                 aria-label="Loading..."
                 className="max-w-md"
+                color="danger"
             />}
             {patient && <div className="details">
                 <p className="text-lg font-medium text-gray-700">Welcome to <span className="font-bold">{patient.name}</span>&apos; Dashboard!</p>
