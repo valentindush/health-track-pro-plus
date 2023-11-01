@@ -1,5 +1,5 @@
 
-export const BACKEND_URL = 'https://dashboard.render.com/';
+export const BACKEND_URL = 'http://localhost:4000';
 
 export const getPatients = async () => {
     const response = await fetch(`${BACKEND_URL}/patient/get-all`);

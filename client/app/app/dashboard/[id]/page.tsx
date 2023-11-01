@@ -60,17 +60,17 @@ const DashBoard = ({ params }: { params: { id: string } }) => {
 
         setChartData({
             data: {
-                labels: rd.data?.map((r)=> new Date(r.timestamp).toLocaleDateString('en-US')),
+                labels: rd.data?.map((r: { timestamp: string | number | Date })=> new Date(r.timestamp).toLocaleDateString('en-US')),
                 datasets: [
                     {
                         label: 'Temperature',
-                        data: rd.data?.map((r)=> r.temperature),
+                        data: rd.data?.map((r: { temperature: any })=> r.temperature),
                         borderColor: 'white',
                         backgroundColor: '#3e9eed',
                     },
                     {
                         label: 'Heart Beat Rate',
-                        data: rd.data?.map((r)=> r.heartBeat),
+                        data: rd.data?.map((r: { heartBeat: any })=> r.heartBeat),
                         borderColor: 'white',
                         backgroundColor: '#f763a6',
                     },
@@ -78,12 +78,12 @@ const DashBoard = ({ params }: { params: { id: string } }) => {
             }
         })
 
-        const temp = rd.data?.map((r)=> r.temperature)
-        const bpm = rd.data?.map((r)=> r.heartBeat)
+        const temp = rd.data?.map((r: { temperature: any })=> r.temperature)
+        const bpm = rd.data?.map((r: { heartBeat: any })=> r.heartBeat)
 
         setAverages([
-            temp.reduce((a, b) => a + b) / temp.length,
-            bpm.reduce((a, b) => a + b) / bpm.length
+            temp.reduce((a: any, b: any) => a + b) / temp.length,
+            bpm.reduce((a: any, b: any) => a + b) / bpm.length
         ])
         
         setLoading(false)
@@ -102,9 +102,9 @@ const DashBoard = ({ params }: { params: { id: string } }) => {
                 className="max-w-md"
             />}
             {patient && <div className="details">
-                <p className="text-lg font-medium text-gray-700">Welcome to <span className="font-bold">{patient.name}</span>'s Dashboard!</p>
-                <div className="py-6 grid grid-cols-3 gap-4">
-                    <div className=" bg-gray-100/40 rounded-xl h-[7rem] shadow-md hover:shadow-lg p-4">
+                <p className="text-lg font-medium text-gray-700">Welcome to <span className="font-bold">{patient.name}</span>&apos; Dashboard!</p>
+                <div className="py-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div className=" bg-gray-100/40 rounded-xl border-2 border-gray-500/50 h-[7rem] shadow-md hover:shadow-lg p-4">
                         <p className="font-medium text-lg">{patient?.name}</p>
                         <p className="font-sm">{patient?.nationalId}</p>
                     </div>
@@ -146,7 +146,7 @@ const DashBoard = ({ params }: { params: { id: string } }) => {
                         </thead>
                         <tbody>
                         {readings.map((reading, index) => (
-                            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <td scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {new Date(reading.createdAt).toLocaleDateString('en-US')}
                             </td>
