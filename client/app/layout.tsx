@@ -18,12 +18,6 @@ export default function RootLayout({
     <html lang="en" className="light">
       <body className={inter.className}>
         {children}
-
-        <footer className='bg-pink-400 p-8 text-white absolute w-screen bottom-0'>
-
-          <p className='text-center'>Copyright &copy; {new Date().getFullYear()} by Dush All right reserved </p>
-
-        </footer>
       </body>
     </html>
   )

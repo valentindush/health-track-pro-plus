@@ -34,6 +34,7 @@ export default function Home() {
   }, [])  
 
   return (
+    <>
     <main className="px-4">
       <div className="sticky top-0 p-4 flex items-center items-center justify-between">
         <div className="">
@@ -101,6 +102,14 @@ export default function Home() {
 
       </div>
 
+      
+
     </main>
+    <footer className='footer bg-pink-400 p-8 text-white absolute bottom-0 w-screen bottom-0'>
+
+      <p className='text-center'>Copyright &copy; {new Date().getFullYear()} by Dush All right reserved </p>
+
+    </footer>
+  </>
   )
 }
