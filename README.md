@@ -74,6 +74,7 @@ https://healthtrackpro.onrender.com/api-docs
 
 
 ## Contributors
+**LOS MAESTROS**
 * Valentin D
 * Eden N
 * Rosine N
