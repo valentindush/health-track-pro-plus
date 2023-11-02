@@ -61,17 +61,17 @@ const DashBoard = ({ params }: { params: { id: string } }) => {
 
             setChartData({
                 data: {
-                    labels: rd.data?.map((r: { timestamp: string | number | Date }) => new Date(r.timestamp).toLocaleDateString('en-US')),
+                    labels: rd.data?.slice(0,20).map((r: { timestamp: string | number | Date }) => new Date(r.timestamp).toLocaleDateString('en-US')),
                     datasets: [
                         {
                             label: 'Temperature',
-                            data: rd.data?.map((r: { temperature: any }) => r.temperature),
+                            data: rd.data?.slice(0,20).map((r: { temperature: any }) => r.temperature),
                             borderColor: 'white',
                             backgroundColor: '#3e9eed',
                         },
                         {
                             label: 'Heart Beat Rate',
-                            data: rd.data?.map((r: { heartBeat: any }) => r.heartBeat),
+                            data: rd.data?.slice(0,20).map((r: { heartBeat: any }) => r.heartBeat),
                             borderColor: 'white',
                             backgroundColor: '#f763a6',
                         },
@@ -83,8 +83,8 @@ const DashBoard = ({ params }: { params: { id: string } }) => {
             const bpm = rd.data?.map((r: { heartBeat: any }) => r.heartBeat)
 
             setAverages([
-                temp.reduce((a: any, b: any) => a + b) / temp.length,
-                bpm.reduce((a: any, b: any) => a + b) / bpm.length
+                parseFloat((temp.reduce((a: any, b: any) => a + b) / temp.length)).toFixed(1),
+                parseFloat(bpm.reduce((a: any, b: any) => a + b) / bpm.length).toFixed(1)
             ])
 
             setLoading(false)
@@ -124,7 +124,7 @@ const DashBoard = ({ params }: { params: { id: string } }) => {
                         <div className="bg-gradient-to-br text-gray-600 hover:bg-gradient-to-bl transition-colors from-pink-500 to-cyan-500 rounded-xl h-[7rem] shadow-lg font-medium p-1 hover:shadow-md">
                             <div className="bg-gray-100 flex flex-col h-full rounded-lg items-center justify-center">
                                 <p className="text-xs">Average BPM</p>
-                                <span className="text-4xl">{averages[1]}</span>
+                                <span className="text-4xl">{averages[1]}BPM</span>
                             </div>
                         </div>
                     </div>

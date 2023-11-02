@@ -24,7 +24,7 @@ export class SensorService {
                     patientId: patientId,
                     heartBeat: heartBeat,
                     temperature: temperature,
-                    timestamp: new Date(timeStamp)
+                    timestamp: new Date(Date.now())
                 }
             })
 
@@ -33,6 +33,7 @@ export class SensorService {
                 data: newRecord
             }
         } catch (error) {
+            console.log(error)
             throw new InternalServerErrorException("Error uploading data");   
         }
 
