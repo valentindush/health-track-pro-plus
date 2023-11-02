@@ -19,7 +19,7 @@ def upload_data(id, rate, temp):
         "Content-Type": "application/json"
     }
 
-    HTTP_Request = requests.post("http://localhost:4000/sensor/upload-data", json=formData, headers=headers)
+    HTTP_Request = requests.post("https://healthtrackpro.onrender.com/sensor/upload-data", json=formData, headers=headers)
 
     if HTTP_Request.status_code == 201:
         return True

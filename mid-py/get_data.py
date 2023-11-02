@@ -19,7 +19,8 @@ while True:
 
         if 60 <= heart_rate <= 100:
             print("bpm: " + str(heart_rate))
-            print("temp" + str(temp))
+            print("temp: " + str(temp))
+            print('------------------------------------')
 
-            cursor.execute("INSERT INTO records (id, rate, temp) VALUES (?, ?)", (str(time.time()), heart_rate, temp))
+            cursor.execute("INSERT INTO records (id, rate, temp) VALUES (?, ?, ?)", (str(time.time()), heart_rate, temp))
             connection.commit()
