@@ -83,8 +83,8 @@ const DashBoard = ({ params }: { params: { id: string } }) => {
             const bpm = rd.data?.map((r: { heartBeat: any }) => r.heartBeat)
 
             setAverages([
-                parseFloat((temp.reduce((a: any, b: any) => a + b) / temp.length)).toFixed(1),
-                parseFloat(bpm.reduce((a: any, b: any) => a + b) / bpm.length).toFixed(1)
+                temp.reduce((a : any, b : any) => parseFloat(a) + parseFloat(b)) / temp.length,
+                bpm.reduce((a : any, b : any) => parseFloat(a) + parseFloat(b)) / bpm.length
             ])
 
             setLoading(false)
@@ -118,13 +118,13 @@ const DashBoard = ({ params }: { params: { id: string } }) => {
                         <div className="bg-gradient-to-br text-gray-600 border hover:bg-gradient-to-bl transition-colors from-pink-500 to-cyan-500 rounded-xl h-[7rem] shadow-lg font-medium p-1 hover:shadow-md">
                             <div className="bg-gray-100 flex flex-col h-full rounded-lg items-center justify-center">
                                 <p className="text-xs">Average Temperature</p>
-                                <span className="text-4xl">{averages[0]}&deg;C</span>
+                                <span className="text-4xl">{averages[0].toFixed(1)}&deg;C</span>
                             </div>
                         </div>
                         <div className="bg-gradient-to-br text-gray-600 hover:bg-gradient-to-bl transition-colors from-pink-500 to-cyan-500 rounded-xl h-[7rem] shadow-lg font-medium p-1 hover:shadow-md">
                             <div className="bg-gray-100 flex flex-col h-full rounded-lg items-center justify-center">
                                 <p className="text-xs">Average BPM</p>
-                                <span className="text-4xl">{averages[1]}BPM</span>
+                                <span className="text-4xl">{averages[1].toFixed(1)}BPM</span>
                             </div>
                         </div>
                     </div>
