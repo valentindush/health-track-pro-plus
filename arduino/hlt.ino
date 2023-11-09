@@ -70,7 +70,7 @@ void loop ()
            sensors.requestTemperatures();
           float temp = sensors.getTempCByIndex(0);
           print_value = 60000. / (0.4 * first + 0.3 * second + 0.3 * third); 
-          Serial.println(String(print_value) + "|" + String(sensors.getTempCByIndex(0) + 10)); 
+          Serial.println(String(print_value) + "|" + String(sensors.getTempCByIndex(0) + 8.5)); 
           third = second; 
           second = first; 
         } 
