@@ -44,6 +44,9 @@ export class SensorService {
             const readings = await this.prisma.reading.findMany({
                 where: {
                     patientId: parseInt(id.toString())
+                },
+                orderBy:{
+                    createdAt: 'desc'
                 }
             })
             return {

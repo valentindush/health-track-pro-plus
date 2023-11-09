@@ -52,7 +52,11 @@ export class PatientService {
   }
   async getAll() {
     try {
-      const patients = await this.prisma.patient.findMany()
+      const patients = await this.prisma.patient.findMany({
+        orderBy: {
+          createdAt: 'desc'
+        }
+      })
       return {
         status: "success",
         data: patients
